@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashstyle.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/font-awesome-line-awesome/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h1>ECOMApp</h1>
+        </div>
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="#"><span class="las la-igloo"></span>
+                    <span>Profile</span></a>
+                </li>
+                <li>
+                    <a href="{% url 'seller:sellerhome' %}"><span class="las la-home"></span>
+                    <span>Home</span></a>
+                </li>
+                <li>
+                    <a href="#"><span class="las la-catalogue"></span>
+                    <span>Catalogue</span></a>
+                </li>
+                <li>
+                    <a href="{% url 'seller:addproduct' %}"><span class="las la-addproduct"></span>
+                    <span>Add Product</span></a>
+                </li>
+                <li>
+                    <a href="#"><span class="las la-updatestoke"></span>
+                    <span>Update Stoke</span></a>
+                </li>
+                <li>
+                    <a href="#"><span class="las la-currentstoke"></span>
+                    <span>Current Stoke</span></a>
+                </li>
+                <li>
+                    <a href="{% url 'seller:changePassword' %}"><span class="las la-logout"></span>
+                    <span>Change Password</span></a>
+                </li>
+                <li>
+                    <a href=""><span class="las la-changepassword"></span>
+                    <span>Logout</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <header>
+            <h4 style="color: black;">welcome</h4>
+        </header>
+    </div>
+</body>
+</html>

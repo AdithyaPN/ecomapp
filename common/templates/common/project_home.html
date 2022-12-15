@@ -1,0 +1,39 @@
+{% extends 'common/common_master.html' %}
+
+{% load static %}
+
+{% block content %}
+
+  <!-- <section class="form my-4 mx-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h4><a href="/common/sellerlogin">SELLER</a></h4>
+            </div>
+            <div class="col-lg-6">
+                <h4><a href="/common/customerlogin">CUSTOMER</a></h4>
+            </div>
+        </div>
+    </div>
+</section> -->
+<br><br><br><br>
+<section class="banner-left bg-olive">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-lg-6">
+                <div class="banner-content">
+                    <div style="float:right; background-color:aquamarine; width:700px; height:400px; border-radius:250px;margin-right: -100px;">
+                        <a href="/common/sellerlogin"><center><img src="{% static 'images/seller.webp' %}" alt="" style="margin-top:50px;"></center></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" style="float: right;color:rgb(18, 99 ,228)">
+                <div class="mb-3" style="background-color:aquamarine; width:700px; height:400px; border-radius:250px; margin-left: 100px;">
+                    <a href="/common/customerlogin"><center><img src="{% static 'images/customer.jpg' %}" alt="" width="400px" height="280px" style="margin-top:50px;;"></center></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br><br><br>
+{% endblock %}

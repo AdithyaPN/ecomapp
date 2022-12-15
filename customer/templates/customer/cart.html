@@ -1,0 +1,42 @@
+{% extends 'customer/customer_master.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="text-center p-4">
+    <h1>MY CART</h1>
+</div>
+<div class="container">
+<div class="row">
+    
+    <div class="">
+        
+        <table class="table">
+            {% if customer_cart %}
+            <thead>
+            <th>Product Name</th>
+            <th>Discription</th>
+            <th>price</th>
+            <th>image</th>
+            <th>Order Status</th>
+            <!-- <th>Status</th> -->
+            </thead>
+            {% for cart in customer_cart %}
+            
+            <tr class="table-active">
+                <td>{{cart.product_details.product_name}}</td>
+                <td>{{cart.product_details.product_description}}</td>
+                <td>{{cart.product_details.product_price}}</td>
+                <td><img src="{{cart.product_details.product_image.url}}" class="card-img-top" alt="..." height="100px" width="100px"></td>
+                <td><a href="{% url 'customer:remove_cart' cart.product_details.id %}">Remove</a></td>
+            </tr>
+        
+            {% endfor %}
+        </table>
+        {% else %}
+        <h1>Cart is Empty</h1>
+        {% endif %}
+    </div>
+   </div>
+</div>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'customer/customer_master.html' %}
+
+{% load static %}
+
+{% block content %}
+<style>
+    .tb1{
+        width: 100%;
+        text-align: center;
+        padding: 2px;
+    }
+</style>
+<br><br><br>
+<section class="banner-left">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-12 col-lg-6">
+                <div class="banner-content">
+                    <div
+                        style="float:right; background-color:black; width:700px; height:400px; border-radius:250px;margin-right: -100px;">
+                        <center><img src="{{details.product_image.url}}" alt="" height="300px" width="200px"
+                                style="margin-top: 50px;"></center>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6" style="float: right;">
+                <div class="mb-3"
+                    style="background-color:black; color: white; width:700px; height:400px; border-radius:250px; margin-left: 100px; text-align: center;">
+                    <center style="padding: 25px;">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <table class="tb1">
+
+                                <tr>
+                                    <td><h4 style=" margin-top:100px;">{{details.product_name|title}}</h4></td>
+                                </tr>
+                                <tr><td>Product Description: {{details.product_description|title}}</td></tr>
+                                <tr><td>Price: {{details.product_price}}</td></tr>
+                                <tr><td><button type="submit" class="btn btn-primary">Add to Cart</button></td></tr>
+                                <tr><td>{{msg}}</td></tr>
+                            </table>
+                        </form>
+                        <br><br>
+                    </center>
+                </div>
+                <a href="{% url 'customer:customerhome' %}">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+<!-- <section>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="catalogues">
+                    <div class="cat-1">
+                        <img src="{{details.product_image.url}}" alt="" height="300px" width="200px" style="margin-top: 50px;">
+
+                        <form method="POST">
+                            {% csrf_token %}
+                            
+                        <h4 style=" margin-top:80px">{{details.product_name}}</h4><br>
+                        <p>Product description:{{details.product_description}}<br>
+                        <p>Price:{{details.product_price}}</p><br>
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            {{msg}}
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+
+
+<br><br><br>
+{% endblock %}

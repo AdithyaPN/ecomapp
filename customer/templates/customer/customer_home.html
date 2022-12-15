@@ -1,0 +1,144 @@
+{% extends 'customer/customer_master.html' %}
+
+{% load static %}
+
+{% block content %}
+<!-- <style>
+    img{
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    display: block;
+    
+}
+.gallary{
+    margin-left: 150px;
+    text-align: center;
+    padding: 30px 30px;
+
+}
+.btn-outline-success{
+    width: 100px;
+    height: 40px;
+}
+button{
+    text-align: center;
+    font-size: 15px;
+    color: black;
+    width: 200px;
+    padding: 15px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    margin-top: 5px;
+    border-radius: 20px;
+}
+.buy-1{
+    background: #2183a2;
+}
+
+</style>
+
+<div class="row">
+    <div class="col-lg-3">
+        <div class="gallary">
+            <div class="content">
+                <img src="{% static 'images/shoes.jpeg' %}" alt="">
+                <h3>Shoes</h3>
+                <h6>$100.00</h6>
+                <p><a href="/customer/productDetails">Know more</a></p>
+                <button class="buy-1" type="submit">Add to Cart</button>
+            </div>
+        </div>
+        <div class="gallary">
+            <div class="content">
+                <img src="{% static 'images/plant.webp' %}" alt="">
+                <h3>Plants</h3>
+                <h6>$50.00</h6>
+                <p><a href="/customer/productDetails">Know more</a></p>
+                <button class="buy-1" type="submit">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="gallary">
+            <div class="content">
+                <img src="{% static 'images/iph.jpg' %}" alt="">
+                <h3>Phones</h3>
+                <h6>$200.00</h6>
+                <p><a href="/customer/productDetails">Know more</a></p>
+                <button class="buy-1" type="submit">Add to Cart</button>
+            </div>
+        </div>
+        <div class="gallary">
+            <div class="content">
+                <img src="{% static 'images/makeup.jpg' %}" alt="">
+                <h3>Cosmetics</h3>
+                <h6>$120.00</h6>
+                <p><a href="/customer/productDetails">Know more</a></p>
+                <button class="buy-1" type="submit">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="gallary">
+            <div class="content">
+                <img src="{% static 'images/bags.jpeg' %}" alt="">
+                <h3>Bags</h3>
+                <h6>$110.00</h6>
+                <p><a href="/customer/productDetails">Know more</a></p>
+                <button class="buy-1" type="submit">Add to Cart</button>
+            </div>
+        </div>
+        <div class="gallary">
+            <div class="content">
+                <img src="{% static 'images/dress.webp' %}" alt="">
+                <h3>Ethnical</h3>
+                <h6>$200.00</h6>
+                <p><a href="/customer/productDetails">Know more</a></p>
+                <button class="buy-1" type="submit">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="gallary">
+            <div class="content">
+                <img src="{% static 'images/jean.jpg' %}" alt="">
+                <h3>Jeans</h3>
+                <h6>$90.00</h6>
+                <p><a href="/customer/productDetails">Know more</a></p>
+                <button class="buy-1" type="submit">Add to Cart</button>
+            </div>
+        </div>
+        <div class="gallary">
+            <div class="content">
+                <img src="{% static 'images/gro.jpg' %}" alt="">
+                <h3>Grocery</h3>
+                <h6>$50.00</h6>
+                <p><a href="/customer/productDetails">Know more</a></p>
+                <button class="buy-1" type="submit">Add to Cart</button>
+            </div>
+        </div>
+    </div>   
+</div> -->
+<br><br><br>
+<div class="col-md-10">
+    <div class="row">
+        {% for products in products %}
+    <div class="col-4">
+        <div class="card" style="width: 18rem;">
+            <img src="{{products.product_image.url}}" class="card-img-top" alt="..." height="200px" width="200px">
+            <div class="card-body">
+                <h5 class="card-title">{{products.product_name|title}}</h5>
+                <p class="card-text">{{products.product_description|title}}</p>
+                <a href="{% url 'customer:productDetails' products.id %}" class="btn btn-primary">Details</a>
+                <p>seller: {{products.seller.seller_name|title}}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    </div>
+    </div>   
+<br><br><br> 
+
+{% endblock %}
