@@ -63,7 +63,8 @@ def seller_profile(request):
 def update_stock(request):
 
     update_stock = Product.objects.filter(seller = request.session['seller'])
-
+    
+    # write this if condition to add new stock with current stock
     if request.method =='POST':
         new_stock = request.POST['NewStock']
         product_id = request.POST['product_id']
@@ -87,6 +88,7 @@ def logout(request):
     request.session.flush() # to remove session data from django_session table
     return redirect('common:sellerlogin')
 
+# this is a funtion to update stock in seller (done with update_stock.html using Ajax)
 def get_stock(request):
     id = request.POST['id']
     product = Product.objects.get(id=id)
