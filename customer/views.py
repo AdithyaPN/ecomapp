@@ -2,12 +2,16 @@ from django.shortcuts import render,redirect
 from seller.models import Product
 from common.models import Customer
 from customer.models import Cart
+from .auth_guard import auth_customer
+
 
 # Create your views here.
+@auth_customer
 def customer_home(request):
     product_list = Product.objects.all() # all() is used to get every sellers products from the database.
     return render(request, 'customer/customer_home.html',{'products':product_list})
 
+@auth_customer
 def change_password(request):
     msg = ''
     if request.method == 'POST':
@@ -29,6 +33,7 @@ def change_password(request):
             msg = 'Incorrect password'
     return render(request, 'customer/change_password.html',{'msg':msg})
 
+@auth_customer
 def prod_details(request,pid):
     msg = ''
     product_details = Product.objects.get(id = pid)
@@ -52,13 +57,19 @@ def prod_details(request,pid):
     return render(request, 'customer/product_details.html', context)
     # return render(request, 'customer/product_details.html',{'details':product_details,'msg':msg})
 
+@auth_customer
 def customer_cart(request):
-    cart = Cart.objects.filter(customer = request.session['customer'])
-    return render(request, 'customer/cart.html',{'customer_cart' : cart})
+    if 'customer' in request.session: # setting the customer session, to block customer activities before login
+        cart = Cart.objects.filter(customer = request.session['customer'])
+        return render(request, 'customer/cart.html',{'customer_cart' : cart})
+    else:
+        return redirect('common:customerlogin')
 
+@auth_customer
 def customer_orders(request):
     return render(request, 'customer/orders.html')
 
+@auth_customer
 def profile(request):
     profile = Customer.objects.get(id = request.session['customer'])
 
@@ -66,11 +77,12 @@ def profile(request):
 
 # to logout and remove item from cart have no html. these are two functions to do the task.
 # remove item has url, it is done by using id
+@auth_customer
 def remove_item_from_cart(request,pid):
     cart_item = Cart.objects.get(product_details = pid, customer = request.session['customer'])
     cart_item.delete()
     return redirect('customer:cart')
-
+@auth_customer
 def logout(request):
     del request.session['customer']
     request.session.flush() # to remove session data from django_session table

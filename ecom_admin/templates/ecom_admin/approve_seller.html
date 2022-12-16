@@ -49,8 +49,12 @@
                             <td>{{seller.seller_username}}</td>
                             <td>{{seller.seller_password}}</td>
                             <td><img src="{{seller.seller_pic.url}}" alt="" height="100px" width="100px"></td>
-                            <td><button type="submiy" class="btn btn-success">Approve</button></td>
-                            <td><button type="button" class="btn btn-danger">Approve</button></td>
+                            <td>
+                                {% if not seller.approved %}
+                                <button type="submit" class="btn btn-success"><a href="{% url 'ecom_admin:approve' seller.id %}">Approve</a></button>
+                                {% endif %}
+                            </td>
+                            <td><button type="button" class="btn btn-danger">Remove</button></td>
                         </tr>
                         {% endfor %}
                     </tbody>

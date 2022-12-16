@@ -10,4 +10,3 @@ class Product(models.Model):
     product_price = models.FloatField()
     current_stock = models.BigIntegerField(default=1)
     product_image = models.ImageField(upload_to='product')
-    

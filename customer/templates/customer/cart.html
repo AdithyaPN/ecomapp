@@ -16,7 +16,8 @@
             <thead>
             <th>Product Name</th>
             <th>Discription</th>
-            <th>price</th>
+            <th>Quantity</th>
+            <th>Total Price</th>
             <th>image</th>
             <th>Order Status</th>
             <!-- <th>Status</th> -->
@@ -26,6 +27,7 @@
             <tr class="table-active">
                 <td>{{cart.product_details.product_name}}</td>
                 <td>{{cart.product_details.product_description}}</td>
+                <td><input type="number"></td>
                 <td>{{cart.product_details.product_price}}</td>
                 <td><img src="{{cart.product_details.product_image.url}}" class="card-img-top" alt="..." height="100px" width="100px"></td>
                 <td><a href="{% url 'customer:remove_cart' cart.product_details.id %}">Remove</a></td>

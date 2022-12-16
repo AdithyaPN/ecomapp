@@ -23,3 +23,4 @@ class Seller(models.Model):
     seller_username = models.CharField(max_length=20)
     seller_password = models.CharField(max_length=20)
     seller_pic = models.ImageField(upload_to='seller/')
+    approved = models.BooleanField(default=False)
