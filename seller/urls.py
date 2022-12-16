@@ -12,5 +12,5 @@ urlpatterns=[
     path('updateStock', views.update_stock, name='updateStock'),
     path('recentOrder', views.recent_order, name='recentOrder'),
     path('orderHistory', views.order_history, name='orderHistory'),
-    path('get_stock', views.get_stock, name='get_stock'),
+    path('get_stock', views.get_stock, name='get_stock'),   # url in which Ajax call is made, to update stock
 ]

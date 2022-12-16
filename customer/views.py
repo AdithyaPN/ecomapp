@@ -64,6 +64,8 @@ def profile(request):
 
     return render(request, 'customer/profile.html',{'customer' : profile})
 
+# to logout and remove item from cart have no html. these are two functions to do the task.
+# remove item has url, it is done by using id
 def remove_item_from_cart(request,pid):
     cart_item = Cart.objects.get(product_details = pid, customer = request.session['customer'])
     cart_item.delete()
